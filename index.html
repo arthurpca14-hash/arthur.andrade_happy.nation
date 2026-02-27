@@ -13,6 +13,8 @@
       --muted: #9ca3af;
       --accent: #38bdf8;
       --accent-2: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
       --border: #334155;
     }
 
@@ -41,6 +43,10 @@
       font-size: clamp(1.7rem, 3.4vw, 2.6rem);
       margin-bottom: 0.5rem;
       color: #f8fafc;
+    }
+
+    h2 {
+      margin-top: 2rem;
     }
 
     .subtitle {
@@ -92,7 +98,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.25rem 1.5rem;
-      margin: 2rem 0;
+      margin: 1rem 0 2rem;
     }
 
     li + li { margin-top: 0.75rem; }
@@ -106,52 +112,114 @@
       color: #dbeafe;
     }
 
+    .test-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .question {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border: 1px solid #243244;
+      border-radius: 10px;
+      background: #0b1220;
+    }
+
+    .question label {
+      display: block;
+      margin: 0.35rem 0;
+      cursor: pointer;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #check-test {
+      background: var(--accent);
+      color: #001827;
+    }
+
+    #reset-test {
+      background: #1e293b;
+      color: var(--text);
+      border: 1px solid #334155;
+    }
+
+    #result {
+      margin-top: 1rem;
+      font-weight: 600;
+      min-height: 1.6rem;
+    }
+
+    .ok { color: var(--accent-2); }
+    .warn { color: var(--warning); }
+    .error { color: var(--danger); }
+
+    .qa-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
     footer {
       margin-top: 2.5rem;
       color: var(--muted);
       text-align: center;
       font-size: 0.95rem;
     }
-
-    a { color: #7dd3fc; }
   </style>
 </head>
 <body>
-  <main class="container">
+  <main class="container" data-testid="page-root">
     <header>
-      <h1>Aprenda JavaScript com um plano <span class="highlight">renomado e extremamente didático</span></h1>
-      <p class="subtitle">
+      <h1 data-testid="page-title">Aprenda JavaScript com um plano <span class="highlight">renomado e extremamente didático</span></h1>
+      <p class="subtitle" data-testid="page-subtitle">
         Esta página organiza um roteiro prático inspirado em trilhas de ensino reconhecidas no mercado
         (como formações completas da Alura, Rocketseat e cursos internacionais no estilo "do zero ao avançado").
       </p>
     </header>
 
-    <section class="module-grid" aria-label="Módulos do curso">
-      <article class="card">
+    <section class="module-grid" aria-label="Módulos do curso" data-testid="course-modules">
+      <article class="card" data-testid="module-1">
         <span class="badge">Módulo 1</span>
         <h3>Fundamentos absolutos</h3>
         <p>Variáveis, tipos, operadores, condicionais e laços com muitos exercícios curtos.</p>
       </article>
-      <article class="card">
+      <article class="card" data-testid="module-2">
         <span class="badge">Módulo 2</span>
         <h3>Lógica e funções</h3>
         <p>Funções, escopo, arrays e objetos com projetos guiados e desafios semanais.</p>
       </article>
-      <article class="card">
+      <article class="card" data-testid="module-3">
         <span class="badge">Módulo 3</span>
         <h3>JavaScript no navegador</h3>
         <p>DOM, eventos, formulários e consumo de APIs para construir aplicações reais.</p>
       </article>
-      <article class="card">
+      <article class="card" data-testid="module-4">
         <span class="badge">Módulo 4</span>
         <h3>Avançado e carreira</h3>
         <p>Assíncrono, boas práticas, testes, Git/GitHub, portfólio e preparação para vagas.</p>
       </article>
     </section>
 
-    <section>
+    <section data-testid="roadmap-section">
       <h2>Passo a passo recomendado</h2>
-      <ol>
+      <ol data-testid="roadmap-list">
         <li><strong>Defina uma meta clara:</strong> por exemplo, criar 3 projetos web em 90 dias.</li>
         <li><strong>Escolha um curso principal renomado:</strong> prefira plataformas com trilha estruturada, comunidade ativa e exercícios corrigidos.</li>
         <li><strong>Estude 1 hora por dia (mínimo):</strong> 30 min teoria + 30 min prática no editor.</li>
@@ -163,12 +231,106 @@
         <li><strong>Aprenda conceitos avançados:</strong> promises, async/await, módulos e padrões de organização.</li>
         <li><strong>Monte seu portfólio final:</strong> destaque os melhores projetos e descreva os resultados alcançados.</li>
       </ol>
-      <p class="tip"><strong>Dica didática:</strong> para cada aula concluída, escreva um resumo de 5 linhas e implemente uma variação própria do exercício. Isso acelera muito a retenção.</p>
+      <p class="tip"><strong>Dica didática:</strong> para cada aula concluída, escreva um resumo de 5 linhas e implemente uma variação própria do exercício.</p>
+    </section>
+
+    <section class="test-panel" data-testid="knowledge-test">
+      <h2>Teste rápido de conhecimento (pronto para QA)</h2>
+      <p>Use este bloco para validar se o conteúdo foi compreendido e para facilitar testes manuais/automatizados.</p>
+
+      <form id="quiz-form" data-testid="quiz-form">
+        <fieldset class="question" data-testid="question-1">
+          <legend>1) Qual recurso do JavaScript lida melhor com operações assíncronas modernas?</legend>
+          <label><input type="radio" name="q1" value="a"> if/else</label>
+          <label><input type="radio" name="q1" value="b"> async/await</label>
+          <label><input type="radio" name="q1" value="c"> switch</label>
+        </fieldset>
+
+        <fieldset class="question" data-testid="question-2">
+          <legend>2) Qual prática ajuda mais a evoluir rapidamente?</legend>
+          <label><input type="radio" name="q2" value="a"> Somente assistir aulas</label>
+          <label><input type="radio" name="q2" value="b"> Prática diária com projetos</label>
+          <label><input type="radio" name="q2" value="c"> Copiar código sem entender</label>
+        </fieldset>
+
+        <fieldset class="question" data-testid="question-3">
+          <legend>3) Onde publicar projetos para portfólio?</legend>
+          <label><input type="radio" name="q3" value="a"> GitHub</label>
+          <label><input type="radio" name="q3" value="b"> Bloco de notas local</label>
+          <label><input type="radio" name="q3" value="c"> Sem publicar</label>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="check-test" data-testid="check-test">Corrigir teste</button>
+          <button type="reset" id="reset-test" data-testid="reset-test">Limpar respostas</button>
+        </div>
+      </form>
+
+      <p id="result" class="warn" data-testid="result">Responda às 3 perguntas e clique em "Corrigir teste".</p>
+      <p class="qa-note" data-testid="qa-note">IDs e <code>data-testid</code> foram adicionados para facilitar automação (Playwright/Cypress).</p>
     </section>
 
     <footer>
       Roteiro educacional para iniciantes em JavaScript • Use como guia e adapte ao seu ritmo.
     </footer>
   </main>
+
+  <script>
+    const answers = { q1: 'b', q2: 'b', q3: 'a' };
+
+    function getSelectedValue(questionName) {
+      const checked = document.querySelector(`input[name="${questionName}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    function calculateScore() {
+      let score = 0;
+      Object.keys(answers).forEach((key) => {
+        if (getSelectedValue(key) === answers[key]) {
+          score += 1;
+        }
+      });
+      return score;
+    }
+
+    function renderResult(score) {
+      const result = document.getElementById('result');
+      result.classList.remove('ok', 'warn', 'error');
+
+      if (score === 3) {
+        result.textContent = 'Excelente! Você acertou 3/3. Continue para projetos reais.';
+        result.classList.add('ok');
+      } else if (score >= 1) {
+        result.textContent = `Bom começo! Você acertou ${score}/3. Revise os módulos e tente novamente.`;
+        result.classList.add('warn');
+      } else {
+        result.textContent = 'Você acertou 0/3. Recomece pelo Módulo 1 e pratique os fundamentos.';
+        result.classList.add('error');
+      }
+    }
+
+    document.getElementById('check-test').addEventListener('click', () => {
+      const q1 = getSelectedValue('q1');
+      const q2 = getSelectedValue('q2');
+      const q3 = getSelectedValue('q3');
+
+      if (!q1 || !q2 || !q3) {
+        const result = document.getElementById('result');
+        result.textContent = 'Preencha todas as perguntas antes de corrigir.';
+        result.classList.remove('ok', 'error');
+        result.classList.add('warn');
+        return;
+      }
+
+      renderResult(calculateScore());
+    });
+
+    document.getElementById('quiz-form').addEventListener('reset', () => {
+      const result = document.getElementById('result');
+      result.textContent = 'Responda às 3 perguntas e clique em "Corrigir teste".';
+      result.classList.remove('ok', 'error');
+      result.classList.add('warn');
+    });
+  </script>
 </body>
 </html>
